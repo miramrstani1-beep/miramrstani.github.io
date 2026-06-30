@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mira Mrstani — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-outer: #ffffff;
+    --paper: #ffffff;
+    --ink: #111111;
+    --ink-soft: #6a6a6a;
+    --accent: #c4451f;
+    --line: #e7e2dc;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    background:var(--bg-outer);
+    font-family:'Inter', sans-serif;
+    color:var(--ink);
+    padding:60px 20px 120px;
+  }
+  .wrap{
+    max-width:1000px;
+    margin:0 auto;
+  }
+
+  .eyebrow{
+    font-size:11px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--ink);
+  }
+  .eyebrow span{
+    display:block;
+    font-weight:400;
+    color:var(--ink-soft);
+    letter-spacing:0.08em;
+    margin-top:2px;
+  }
+
+  .tag{
+    font-size:10px;
+    letter-spacing:0.05em;
+    color:var(--ink-soft);
+    text-align:right;
+    line-height:1.6;
+  }
+
+  .slide{
+    background:var(--paper);
+    box-shadow:0 20px 40px -28px rgba(0,0,0,0.25);
+    padding:48px;
+    position:relative;
+  }
+
+  .crosshair{
+    position:absolute;
+    bottom:24px;
+    right:28px;
+    width:16px; height:16px;
+    opacity:0.7;
+  }
+  .crosshair::before,
+  .crosshair::after{
+    content:"";
+    position:absolute;
+    background:var(--ink);
+  }
+  .crosshair::before{ left:7px; top:0; width:2px; height:16px; }
+  .crosshair::after{ top:7px; left:0; width:16px; height:2px; }
+
+  .footer-mark{
+    position:absolute;
+    bottom:26px;
+    left:48px;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:0.04em;
+  }
+
+  /* ---------- SLIDE 1 : COVER ---------- */
+  .slide-1{ margin-bottom:34px; }
+  .s1-grid{
+    display:grid;
+    grid-template-columns:1fr 0.85fr;
+    gap:36px;
+    align-items:start;
+  }
+  .s1-left p.desc{
+    font-size:13px;
+    line-height:1.6;
+    color:var(--ink-soft);
+    max-width:280px;
+    margin:18px 0 28px;
+  }
+  .s1-left h1{
+    font-family:'Archivo Black', sans-serif;
+    font-size:clamp(34px, 5vw, 52px);
+    line-height:0.95;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  .s1-left .sub{
+    font-size:11px;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin:10px 0 30px;
+  }
+  .s1-thumb{
+    width:160px;
+  }
+
+  /* ---------- SLIDE 2 : WIDE FEATURE ---------- */
+  .slide-2{
+    margin-bottom:96px;
+    padding:0;
+    display:grid;
+    grid-template-columns:1.4fr 1fr;
+  }
+  .s2-side{
+    background:var(--ink);
+    color:#fff;
+    padding:32px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+  }
+  .s2-side .top-row{
+    display:flex; justify-content:space-between;
+    font-size:10px; letter-spacing:0.08em; color:#bbb;
+  }
+  .s2-side h2{
+    font-family:'Archivo Black', sans-serif;
+    font-size:30px;
+    margin:30px 0 8px;
+    line-height:1;
+  }
+  .s2-side p{
+    font-size:12px; line-height:1.6; color:#ccc;
+    max-width:220px;
+  }
+  .s2-side .water{
+    font-size:11px; letter-spacing:0.05em; color:#888;
+  }
+
+  /* ---------- SLIDE 3 : GRID + CENTER TITLE ---------- */
+  .slide-3{ margin-bottom:40px; }
+  .s3-grid{
+    display:grid;
+    grid-template-columns:1fr 1.3fr 1fr;
+    gap:18px;
+    align-items:center;
+  }
+  .s3-center{
+    text-align:center;
+  }
+  .s3-center .num{
+    font-size:13px; color:var(--ink-soft); margin-top:8px;
+  }
+  .s3-center h2{
+    font-family:'Archivo Black', sans-serif;
+    font-size:30px;
+    margin:0;
+  }
+
+  /* ---------- SLIDE 4 : IMAGE + BIG NUMBER ---------- */
+  .slide-4{
+    margin-bottom:120px;
+  }
+  .s4-grid{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr 0.5fr;
+    gap:30px;
+    align-items:center;
+  }
+  .s4-num{
+    font-family:'Archivo Black', sans-serif;
+    font-size:54px;
+    line-height:0.9;
+    color:var(--accent);
+  }
+  .s4-title h2{
+    font-family:'Archivo Black', sans-serif;
+    font-size:26px;
+    margin:6px 0 10px;
+  }
+  .s4-title p{
+    font-size:12px; color:var(--ink-soft); line-height:1.6; max-width:220px;
+  }
+  .s4-thumbs{
+    display:flex; flex-direction:column; gap:14px;
+  }
+
+  /* ---------- SLIDE 5 : EVEN GRID ---------- */
+  .slide-5{ margin-bottom:0; }
+  .s5-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:18px;
+  }
+
+  /* ---------- IMAGE / PLACEHOLDER ---------- */
+  figure{
+    margin:0;
+    position:relative;
+    overflow:hidden;
+    background:#f1ece5;
+    border:1px solid var(--line);
+  }
+  figure img{
+    display:block; width:100%; height:100%; object-fit:cover;
+  }
+  .ph{
+    width:100%;
+    aspect-ratio: var(--ar, 4/5);
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center; gap:8px;
+    background:repeating-linear-gradient(45deg, #e7e0d5 0 2px, transparent 2px 12px), #f1ece5;
+    color:var(--ink-soft);
+    text-align:center;
+    padding:14px;
+  }
+  .ph .lbl{ font-size:9px; letter-spacing:0.08em; text-transform:uppercase; }
+  .ph button{
+    font-family:'Inter', sans-serif;
+    font-size:10px; letter-spacing:0.05em;
+    padding:7px 14px;
+    background:var(--ink); color:#fff;
+    border:none; cursor:pointer;
+  }
+  .ph button:hover{ background:var(--accent); }
+  figure input[type=file]{ display:none; }
+  figure .remove{
+    position:absolute; top:6px; right:6px;
+    font-size:9px; background:rgba(0,0,0,0.55); color:#fff;
+    border:none; padding:4px 8px; cursor:pointer; display:none; z-index:2;
+  }
+  figure.filled .remove{ display:block; }
+
+  @media (max-width:760px){
+    .s1-grid, .slide-2, .s3-grid, .s4-grid{ grid-template-columns:1fr; }
+    .s2-side{ order:2; }
+    .slide{ padding:28px; }
+    .footer-mark{ left:28px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- SLIDE 1: COVER -->
+  <section class="slide slide-1">
+    <div class="s1-grid">
+      <div class="s1-left">
+        <div class="eyebrow">PORTFOLIO<span>MIRA MRSTANI</span></div>
+        <p class="desc">A documentary look at the makers of the old city — the hands, the workshops, the materials that don't get filmed.</p>
+        <h1>MIRA<br>MRSTANI</h1>
+        <div class="sub">Artist — Damascus</div>
+        <figure class="s1-thumb" style="--ar:4/3;">
+          <div class="ph"><div class="lbl">Thumbnail</div><button type="button">Choose photo</button></div>
+          <button class="remove" type="button">remove</button>
+          <input type="file" accept="image/*">
+        </figure>
+      </div>
+      <figure style="--ar:4/5;">
+        <div class="ph"><div class="lbl">Cover portrait</div><button type="button">Choose photo</button></div>
+        <button class="remove" type="button">remove</button>
+        <input type="file" accept="image/*">
+      </figure>
+    </div>
+    <div class="crosshair"></div>
+  </section>
+
+  <!-- SLIDE 2: WIDE FEATURE -->
+  <section class="slide slide-2">
+    <figure style="--ar:16/11;">
+      <div class="ph"><div class="lbl">Featured artwork</div><button type="button">Choose photo</button></div>
+      <button class="remove" type="button">remove</button>
+      <input type="file" accept="image/*">
+    </figure>
+    <div class="s2-side">
+      <div class="top-row"><span>DEGREES OF ART</span><span>02</span></div>
+      <div>
+        <h2>Dance</h2>
+        <p>Notes on a single piece — process, materials, and the story behind it.</p>
+      </div>
+      <div class="water">180° | MIRA</div>
+    </div>
+  </section>
+
+  <!-- SLIDE 3: 3-UP GRID + CENTER TITLE -->
+  <section class="slide slide-3">
+    <div class="eyebrow" style="margin-bottom:24px;">PORTFOLIO<span>MIRA MRSTANI</span></div>
+    <div class="s3-grid">
+      <figure style="--ar:3/4;">
+        <div class="ph"><div class="lbl">Image</div><button type="button">Choose photo</button></div>
+        <button class="remove" type="button">remove</button>
+        <input type="file" accept="image/*">
+      </figure>
+      <div class="s3-center">
+        <h2>PORTRAITS</h2>
+        <div class="num">01</div>
+      </div>
+      <figure style="--ar:3/4;">
+        <div class="ph"><div class="lbl">Image</div><button type="button">Choose photo</button></div>
+        <button class="remove" type="button">remove</button>
+        <input type="file" accept="image/*">
+      </figure>
+    </div>
+    <div class="crosshair"></div>
+  </section>
+
+  <!-- SLIDE 4: IMAGE + BIG NUMBER -->
+  <section class="slide slide-4">
+    <div class="eyebrow" style="margin-bottom:24px;">PORTFOLIO<span>MIRA MRSTANI</span></div>
+    <div class="s4-grid">
+      <figure style="--ar:3/4;">
+        <div class="ph"><div class="lbl">Image</div><button type="button">Choose photo</button></div>
+        <button class="remove" type="button">remove</button>
+        <input type="file" accept="image/*">
+      </figure>
+      <div class="s4-title">
+        <div class="s4-num">02/</div>
+        <h2>WORKSHOP VISITS</h2>
+        <p>Inside the studios — tools, hands, half-finished pieces.</p>
+      </div>
+      <div class="s4-thumbs">
+        <figure style="--ar:1/1;">
+          <div class="ph"><div class="lbl">Small</div><button type="button">Choose photo</button></div>
+          <button class="remove" type="button">remove</button>
+          <input type="file" accept="image/*">
+        </figure>
+        <figure style="--ar:1/1;">
+          <div class="ph"><div class="lbl">Small</div><button type="button">Choose photo</button></div>
+          <button class="remove" type="button">remove</button>
+          <input type="file" accept="image/*">
+        </figure>
+      </div>
+    </div>
+    <div class="crosshair"></div>
+  </section>
+
+  <!-- SLIDE 5: EVEN GRID -->
+  <section class="slide slide-5">
+    <div class="eyebrow" style="margin-bottom:24px;">PORTFOLIO<span>MIRA MRSTANI</span></div>
+    <div class="s5-grid">
+      <figure style="--ar:3/4;">
+        <div class="ph"><div class="lbl">Image</div><button type="button">Choose photo</button></div>
+        <button class="remove" type="button">remove</button>
+        <input type="file" accept="image/*">
+      </figure>
+      <figure style="--ar:3/4;">
+        <div class="ph"><div class="lbl">Image</div><button type="button">Choose photo</button></div>
+        <button class="remove" type="button">remove</button>
+        <input type="file" accept="image/*">
+      </figure>
+      <figure style="--ar:3/4;">
+        <div class="ph"><div class="lbl">Image</div><button type="button">Choose photo</button></div>
+        <button class="remove" type="button">remove</button>
+        <input type="file" accept="image/*">
+      </figure>
+    </div>
+    <div class="footer-mark">MIRA MRSTANI</div>
+    <div class="crosshair"></div>
+  </section>
+
+</div>
+
+<script>
+  document.querySelectorAll('figure').forEach(fig => {
+    const input = fig.querySelector('input[type=file]');
+    const btn = fig.querySelector('.ph button');
+    const removeBtn = fig.querySelector('.remove');
+    const ph = fig.querySelector('.ph');
+    if(!input || !btn) return;
+
+    btn.addEventListener('click', () => input.click());
+
+    input.addEventListener('change', e => {
+      const file = e.target.files[0];
+      if(!file) return;
+      const url = URL.createObjectURL(file);
+      const img = document.createElement('img');
+      img.src = url;
+      ph.style.display = 'none';
+      fig.appendChild(img);
+      fig.classList.add('filled');
+    });
+
+    removeBtn.addEventListener('click', () => {
+      const img = fig.querySelector('img');
+      if(img) img.remove();
+      ph.style.display = 'flex';
+      fig.classList.remove('filled');
+      input.value = '';
+    });
+  });
+</script>
+</body>
+</html>
