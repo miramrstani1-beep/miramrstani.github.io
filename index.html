@@ -3,404 +3,321 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mira Mrstani — Portfolio</title>
+<title>Mira Almrstani — Visual Artist</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg-outer: #ffffff;
-    --paper: #ffffff;
-    --ink: #111111;
-    --ink-soft: #6a6a6a;
-    --accent: #c4451f;
-    --line: #e7e2dc;
+    --paper:#FFFFFF;
+    --ink:#161513;
+    --muted:#6E6C67;
+    --line:#E7E4DC;
+    --accent:#4C8FC9;
+    --accent-deep:#33628C;
   }
-  *{ box-sizing:border-box; }
-  html,body{ margin:0; padding:0; }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
   body{
-    background:var(--bg-outer);
-    font-family:'Inter', sans-serif;
-    color:var(--ink);
-    padding:60px 20px 120px;
-  }
-  .wrap{
-    max-width:1000px;
-    margin:0 auto;
-  }
-
-  .eyebrow{
-    font-size:11px;
-    letter-spacing:0.12em;
-    text-transform:uppercase;
-    font-weight:600;
-    color:var(--ink);
-  }
-  .eyebrow span{
-    display:block;
-    font-weight:400;
-    color:var(--ink-soft);
-    letter-spacing:0.08em;
-    margin-top:2px;
-  }
-
-  .tag{
-    font-size:10px;
-    letter-spacing:0.05em;
-    color:var(--ink-soft);
-    text-align:right;
-    line-height:1.6;
-  }
-
-  .slide{
     background:var(--paper);
-    box-shadow:0 20px 40px -28px rgba(0,0,0,0.25);
-    padding:48px;
-    position:relative;
-  }
-
-  .crosshair{
-    position:absolute;
-    bottom:24px;
-    right:28px;
-    width:16px; height:16px;
-    opacity:0.7;
-  }
-  .crosshair::before,
-  .crosshair::after{
-    content:"";
-    position:absolute;
-    background:var(--ink);
-  }
-  .crosshair::before{ left:7px; top:0; width:2px; height:16px; }
-  .crosshair::after{ top:7px; left:0; width:16px; height:2px; }
-
-  .footer-mark{
-    position:absolute;
-    bottom:26px;
-    left:48px;
-    font-size:11px;
-    font-weight:600;
-    letter-spacing:0.04em;
-  }
-
-  /* ---------- SLIDE 1 : COVER ---------- */
-  .slide-1{ margin-bottom:34px; }
-  .s1-grid{
-    display:grid;
-    grid-template-columns:1fr 0.85fr;
-    gap:36px;
-    align-items:start;
-  }
-  .s1-left p.desc{
-    font-size:13px;
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-weight:400;
     line-height:1.6;
-    color:var(--ink-soft);
-    max-width:280px;
-    margin:18px 0 28px;
+    -webkit-font-smoothing:antialiased;
   }
-  .s1-left h1{
-    font-family:'Archivo Black', sans-serif;
-    font-size:clamp(34px, 5vw, 52px);
-    line-height:0.95;
-    margin:0;
-    letter-spacing:-0.01em;
-  }
-  .s1-left .sub{
-    font-size:11px;
-    letter-spacing:0.15em;
-    text-transform:uppercase;
-    color:var(--ink-soft);
-    margin:10px 0 30px;
-  }
-  .s1-thumb{
-    width:160px;
-  }
+  a{color:inherit; text-decoration:none;}
 
-  /* ---------- SLIDE 2 : WIDE FEATURE ---------- */
-  .slide-2{
-    margin-bottom:96px;
-    padding:0;
-    display:grid;
-    grid-template-columns:1.4fr 1fr;
+  header{
+    position:sticky; top:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:2rem 3rem 1.4rem;
+    background:var(--paper);
   }
-  .s2-side{
-    background:var(--ink);
-    color:#fff;
-    padding:32px;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-  }
-  .s2-side .top-row{
-    display:flex; justify-content:space-between;
-    font-size:10px; letter-spacing:0.08em; color:#bbb;
-  }
-  .s2-side h2{
-    font-family:'Archivo Black', sans-serif;
-    font-size:30px;
-    margin:30px 0 8px;
-    line-height:1;
-  }
-  .s2-side p{
-    font-size:12px; line-height:1.6; color:#ccc;
-    max-width:220px;
-  }
-  .s2-side .water{
-    font-size:11px; letter-spacing:0.05em; color:#888;
-  }
-
-  /* ---------- SLIDE 3 : GRID + CENTER TITLE ---------- */
-  .slide-3{ margin-bottom:40px; }
-  .s3-grid{
-    display:grid;
-    grid-template-columns:1fr 1.3fr 1fr;
-    gap:18px;
-    align-items:center;
-  }
-  .s3-center{
-    text-align:center;
-  }
-  .s3-center .num{
-    font-size:13px; color:var(--ink-soft); margin-top:8px;
-  }
-  .s3-center h2{
-    font-family:'Archivo Black', sans-serif;
-    font-size:30px;
-    margin:0;
-  }
-
-  /* ---------- SLIDE 4 : IMAGE + BIG NUMBER ---------- */
-  .slide-4{
-    margin-bottom:120px;
-  }
-  .s4-grid{
-    display:grid;
-    grid-template-columns:0.9fr 1.1fr 0.5fr;
-    gap:30px;
-    align-items:center;
-  }
-  .s4-num{
-    font-family:'Archivo Black', sans-serif;
-    font-size:54px;
-    line-height:0.9;
-    color:var(--accent);
-  }
-  .s4-title h2{
-    font-family:'Archivo Black', sans-serif;
-    font-size:26px;
-    margin:6px 0 10px;
-  }
-  .s4-title p{
-    font-size:12px; color:var(--ink-soft); line-height:1.6; max-width:220px;
-  }
-  .s4-thumbs{
-    display:flex; flex-direction:column; gap:14px;
-  }
-
-  /* ---------- SLIDE 5 : EVEN GRID ---------- */
-  .slide-5{ margin-bottom:0; }
-  .s5-grid{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:18px;
-  }
-
-  /* ---------- IMAGE / PLACEHOLDER ---------- */
-  figure{
-    margin:0;
+  .wordmark{
     position:relative;
-    overflow:hidden;
-    background:#f1ece5;
-    border:1px solid var(--line);
+    font-family:'Caveat', cursive;
+    font-weight:600;
+    font-size:2.2rem;
+    line-height:1;
+    z-index:2;
   }
-  figure img{
-    display:block; width:100%; height:100%; object-fit:cover;
+  .wordmark .highlight{
+    position:absolute;
+    left:-6px; right:-8px; bottom:2px;
+    height:11px;
+    background:var(--accent);
+    opacity:0.35;
+    transform:rotate(-1deg);
+    z-index:-1;
   }
-  .ph{
-    width:100%;
-    aspect-ratio: var(--ar, 4/5);
-    display:flex; flex-direction:column;
-    align-items:center; justify-content:center; gap:8px;
-    background:repeating-linear-gradient(45deg, #e7e0d5 0 2px, transparent 2px 12px), #f1ece5;
-    color:var(--ink-soft);
-    text-align:center;
-    padding:14px;
+  nav ul{list-style:none; display:flex; gap:2rem;}
+  nav a{
+    font-size:0.74rem;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    color:var(--muted);
+    transition:color 0.2s ease;
   }
-  .ph .lbl{ font-size:9px; letter-spacing:0.08em; text-transform:uppercase; }
-  .ph button{
-    font-family:'Inter', sans-serif;
-    font-size:10px; letter-spacing:0.05em;
-    padding:7px 14px;
-    background:var(--ink); color:#fff;
-    border:none; cursor:pointer;
-  }
-  .ph button:hover{ background:var(--accent); }
-  figure input[type=file]{ display:none; }
-  figure .remove{
-    position:absolute; top:6px; right:6px;
-    font-size:9px; background:rgba(0,0,0,0.55); color:#fff;
-    border:none; padding:4px 8px; cursor:pointer; display:none; z-index:2;
-  }
-  figure.filled .remove{ display:block; }
+  nav a:hover{color:var(--ink);}
 
-  @media (max-width:760px){
-    .s1-grid, .slide-2, .s3-grid, .s4-grid{ grid-template-columns:1fr; }
-    .s2-side{ order:2; }
-    .slide{ padding:28px; }
-    .footer-mark{ left:28px; }
+  .intro{
+    padding:0.5rem 3rem 3.5rem;
+    max-width:640px;
+  }
+  .intro p{
+    color:var(--muted);
+    font-size:1rem;
+  }
+
+  .filters{
+    padding:0 3rem;
+    display:flex;
+    gap:1.6rem;
+    margin-bottom:2rem;
+  }
+  .filters button{
+    background:none; border:none;
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:0.74rem;
+    letter-spacing:0.09em;
+    text-transform:uppercase;
+    color:var(--muted);
+    cursor:pointer;
+    padding-bottom:4px;
+    border-bottom:1px solid transparent;
+    transition:color 0.2s ease, border-color 0.2s ease;
+  }
+  .filters button:hover{color:var(--ink);}
+  .filters button.active{color:var(--ink); border-color:var(--ink);}
+
+  .grid{
+    padding:0 3rem 2rem;
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    grid-auto-rows:110px;
+    gap:1.1rem;
+  }
+  .piece{
+    position:relative;
+    grid-row:span 3;
+    overflow:hidden;
+    cursor:default;
+  }
+  .piece.tall{grid-row:span 4;}
+  .piece.short{grid-row:span 2;}
+  .piece.wide{grid-column:span 2;}
+  .piece.offset{margin-top:2.4rem;}
+  .art-surface{
+    width:100%; height:100%;
+    transition:transform 0.6s ease;
+  }
+  .piece:hover .art-surface{transform:scale(1.03);}
+  .label{
+    position:absolute;
+    left:0; right:0; bottom:0;
+    background:rgba(255,255,255,0.95);
+    padding:0.75rem 0.9rem;
+    transform:translateY(100%);
+    transition:transform 0.35s ease;
+  }
+  .piece:hover .label{transform:translateY(0);}
+  .label .title{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:0.9rem;
+    margin-bottom:0.15rem;
+  }
+  .label .meta{
+    font-size:0.7rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+  .piece.hidden{display:none;}
+  .piece.block{background:var(--ink);}
+
+  section#about{padding:5rem 0 1rem;}
+  .about-wrap{
+    padding:0 3rem;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:5rem;
+    border-top:1px solid var(--line);
+    padding-top:4rem;
+  }
+  .about-wrap .statement{
+    font-family:'Fraunces', serif;
+    font-size:1.4rem;
+    font-weight:400;
+    line-height:1.5;
+  }
+  .about-wrap .bio p{
+    color:var(--muted);
+    margin-bottom:1.1rem;
+    max-width:48ch;
+  }
+  .about-wrap .bio strong{color:var(--ink); font-weight:500;}
+
+  footer{
+    border-top:1px solid var(--line);
+    margin-top:5rem;
+    padding:3.5rem 3rem 2.2rem;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+  }
+  footer h2{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:1.8rem;
+    max-width:12ch;
+  }
+  .footer-links{display:flex; flex-direction:column; gap:0.5rem; align-items:flex-end;}
+  .footer-links a{
+    font-size:0.85rem;
+    border-bottom:1px solid var(--line);
+    padding-bottom:2px;
+    transition:border-color 0.2s ease, color 0.2s ease;
+  }
+  .footer-links a:hover{border-color:var(--accent); color:var(--accent-deep);}
+  .fine-print{
+    padding:0 3rem 2rem;
+    font-size:0.7rem;
+    color:var(--muted);
+  }
+
+  @media (max-width:860px){
+    header{padding:1.4rem 1.4rem 1rem;}
+    nav ul{gap:1rem;}
+    .intro{padding:0.5rem 1.4rem 2.4rem;}
+    .filters{padding:0 1.4rem; flex-wrap:wrap; gap:1rem;}
+    .grid{padding:0 1.4rem 1.4rem; grid-template-columns:repeat(2, 1fr);}
+    .piece.wide{grid-column:span 2;}
+    .piece.offset{margin-top:0;}
+    .about-wrap{padding:0 1.4rem; padding-top:3rem; grid-template-columns:1fr; gap:2rem;}
+    footer{padding:3rem 1.4rem 2rem; flex-direction:column; align-items:flex-start; gap:1.6rem;}
+    .footer-links{align-items:flex-start;}
+    .fine-print{padding:0 1.4rem 2rem;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important; scroll-behavior:auto !important;}
   }
 </style>
 </head>
 <body>
-<div class="wrap">
 
-  <!-- SLIDE 1: COVER -->
-  <section class="slide slide-1">
-    <div class="s1-grid">
-      <div class="s1-left">
-        <div class="eyebrow">PORTFOLIO<span>MIRA MRSTANI</span></div>
-        <p class="desc">A documentary look at the makers of the old city — the hands, the workshops, the materials that don't get filmed.</p>
-        <h1>MIRA<br>MRSTANI</h1>
-        <div class="sub">Artist — Damascus</div>
-        <figure class="s1-thumb" style="--ar:4/3;">
-          <div class="ph"><div class="lbl">Thumbnail</div><button type="button">Choose photo</button></div>
-          <button class="remove" type="button">remove</button>
-          <input type="file" accept="image/*">
-        </figure>
-      </div>
-      <figure style="--ar:4/5;">
-        <div class="ph"><div class="lbl">Cover portrait</div><button type="button">Choose photo</button></div>
-        <button class="remove" type="button">remove</button>
-        <input type="file" accept="image/*">
-      </figure>
-    </div>
-    <div class="crosshair"></div>
-  </section>
+<header>
+  <div class="wordmark"><span class="highlight"></span>Mira</div>
+  <nav>
+    <ul>
+      <li><a href="#work">Paintings</a></li>
+      <li><a href="#work">Drawings</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
 
-  <!-- SLIDE 2: WIDE FEATURE -->
-  <section class="slide slide-2">
-    <figure style="--ar:16/11;">
-      <div class="ph"><div class="lbl">Featured artwork</div><button type="button">Choose photo</button></div>
-      <button class="remove" type="button">remove</button>
-      <input type="file" accept="image/*">
-    </figure>
-    <div class="s2-side">
-      <div class="top-row"><span>DEGREES OF ART</span><span>02</span></div>
-      <div>
-        <h2>Dance</h2>
-        <p>Notes on a single piece — process, materials, and the story behind it.</p>
-      </div>
-      <div class="water">180° | MIRA</div>
-    </div>
-  </section>
-
-  <!-- SLIDE 3: 3-UP GRID + CENTER TITLE -->
-  <section class="slide slide-3">
-    <div class="eyebrow" style="margin-bottom:24px;">PORTFOLIO<span>MIRA MRSTANI</span></div>
-    <div class="s3-grid">
-      <figure style="--ar:3/4;">
-        <div class="ph"><div class="lbl">Image</div><button type="button">Choose photo</button></div>
-        <button class="remove" type="button">remove</button>
-        <input type="file" accept="image/*">
-      </figure>
-      <div class="s3-center">
-        <h2>PORTRAITS</h2>
-        <div class="num">01</div>
-      </div>
-      <figure style="--ar:3/4;">
-        <div class="ph"><div class="lbl">Image</div><button type="button">Choose photo</button></div>
-        <button class="remove" type="button">remove</button>
-        <input type="file" accept="image/*">
-      </figure>
-    </div>
-    <div class="crosshair"></div>
-  </section>
-
-  <!-- SLIDE 4: IMAGE + BIG NUMBER -->
-  <section class="slide slide-4">
-    <div class="eyebrow" style="margin-bottom:24px;">PORTFOLIO<span>MIRA MRSTANI</span></div>
-    <div class="s4-grid">
-      <figure style="--ar:3/4;">
-        <div class="ph"><div class="lbl">Image</div><button type="button">Choose photo</button></div>
-        <button class="remove" type="button">remove</button>
-        <input type="file" accept="image/*">
-      </figure>
-      <div class="s4-title">
-        <div class="s4-num">02/</div>
-        <h2>WORKSHOP VISITS</h2>
-        <p>Inside the studios — tools, hands, half-finished pieces.</p>
-      </div>
-      <div class="s4-thumbs">
-        <figure style="--ar:1/1;">
-          <div class="ph"><div class="lbl">Small</div><button type="button">Choose photo</button></div>
-          <button class="remove" type="button">remove</button>
-          <input type="file" accept="image/*">
-        </figure>
-        <figure style="--ar:1/1;">
-          <div class="ph"><div class="lbl">Small</div><button type="button">Choose photo</button></div>
-          <button class="remove" type="button">remove</button>
-          <input type="file" accept="image/*">
-        </figure>
-      </div>
-    </div>
-    <div class="crosshair"></div>
-  </section>
-
-  <!-- SLIDE 5: EVEN GRID -->
-  <section class="slide slide-5">
-    <div class="eyebrow" style="margin-bottom:24px;">PORTFOLIO<span>MIRA MRSTANI</span></div>
-    <div class="s5-grid">
-      <figure style="--ar:3/4;">
-        <div class="ph"><div class="lbl">Image</div><button type="button">Choose photo</button></div>
-        <button class="remove" type="button">remove</button>
-        <input type="file" accept="image/*">
-      </figure>
-      <figure style="--ar:3/4;">
-        <div class="ph"><div class="lbl">Image</div><button type="button">Choose photo</button></div>
-        <button class="remove" type="button">remove</button>
-        <input type="file" accept="image/*">
-      </figure>
-      <figure style="--ar:3/4;">
-        <div class="ph"><div class="lbl">Image</div><button type="button">Choose photo</button></div>
-        <button class="remove" type="button">remove</button>
-        <input type="file" accept="image/*">
-      </figure>
-    </div>
-    <div class="footer-mark">MIRA MRSTANI</div>
-    <div class="crosshair"></div>
-  </section>
-
+<div class="intro">
+  <p></p>
 </div>
 
+<section id="work">
+  <div class="filters">
+    <button class="active" data-filter="all">All</button>
+    <button data-filter="painting">Paintings</button>
+    <button data-filter="drawing">Drawings</button>
+    <button data-filter="study">Prints</button>
+  </div>
+  <div class="grid" id="grid">
+
+    <div class="piece tall wide" data-cat="painting">
+      <div class="art-surface" style="background:linear-gradient(155deg,#C9926B 0%,#8B5A3C 45%,#3E2A22 100%);"></div>
+      <div class="label"><div class="title">Untitled (Interior I)</div><div class="meta">Oil on canvas · 2024 · 120 × 90 cm</div></div>
+    </div>
+
+    <div class="piece offset" data-cat="drawing">
+      <div class="art-surface" style="background:linear-gradient(160deg,#EDE7DA 0%,#B9AE98 60%,#736A55 100%);"></div>
+      <div class="label"><div class="title">Study of Hands</div><div class="meta">Graphite on paper · 2023 · 28 × 21 cm</div></div>
+    </div>
+
+    <div class="piece short" data-cat="study">
+      <div class="art-surface" style="background:linear-gradient(140deg,#B7C4B0 0%,#6E7F68 100%);"></div>
+      <div class="label"><div class="title">Courtyard Study</div><div class="meta">Watercolour · 2024 · 18 × 24 cm</div></div>
+    </div>
+
+    <div class="piece offset" data-cat="painting">
+      <div class="art-surface" style="background:linear-gradient(170deg,#7C93A8 0%,#3F5468 60%,#1F2A34 100%);"></div>
+      <div class="label"><div class="title">Blue Hour</div><div class="meta">Oil on panel · 2023 · 60 × 50 cm</div></div>
+    </div>
+
+    <div class="piece tall" data-cat="painting">
+      <div class="art-surface" style="background:linear-gradient(150deg,#D8B48A 0%,#A9714A 55%,#5C3A24 100%);"></div>
+      <div class="label"><div class="title">Threshold</div><div class="meta">Oil on linen · 2022 · 100 × 70 cm</div></div>
+    </div>
+
+    <div class="piece" data-cat="drawing">
+      <div class="art-surface" style="background:linear-gradient(160deg,#E4DED0 0%,#A39B87 100%);"></div>
+      <div class="label"><div class="title">Market Notes I</div><div class="meta">Ink on paper · 2024 · 21 × 29 cm</div></div>
+    </div>
+
+    <div class="piece short block" data-cat="all"></div>
+
+    <div class="piece wide offset" data-cat="painting">
+      <div class="art-surface" style="background:linear-gradient(125deg,#9C7A63 0%,#5B4636 50%,#2B211A 100%);"></div>
+      <div class="label"><div class="title">Old City, Late Light</div><div class="meta">Oil on canvas · 2022 · 150 × 80 cm</div></div>
+    </div>
+
+    <div class="piece short" data-cat="study">
+      <div class="art-surface" style="background:linear-gradient(150deg,#C7B7C4 0%,#7C6478 100%);"></div>
+      <div class="label"><div class="title">Fabric Study</div><div class="meta">Gouache · 2023 · 20 × 20 cm</div></div>
+    </div>
+
+    <div class="piece" data-cat="drawing">
+      <div class="art-surface" style="background:linear-gradient(160deg,#DCD4C2 0%,#8C8168 100%);"></div>
+      <div class="label"><div class="title">Untitled Portrait</div><div class="meta">Charcoal · 2024 · 30 × 24 cm</div></div>
+    </div>
+
+  </div>
+</section>
+
+<section id="about">
+  <div class="about-wrap">
+    <div class="statement">Every place is a feeling rather than a space.</div>
+    <div class="bio">
+      <p>Mira is a visual artist working primarily in oil and acrylic, with a practice grounded in memory, material, and place. Her paintings move slowly, built up in layers that keep the marks of earlier decisions visible. A continuous line with no plan beforehand. Letting the canvas decide where the viewer is transported.</p>
+  
+      
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <h2>Let's talk about the work.</h2>
+  <div class="footer-links">
+    <a href="mailto:hello@mira-art.com">hello@miramrstani1@gmail.com</a>
+  </div>
+</footer>
+<div class="fine-print">© 2026 Mira. All images belong to Mira Almrstani.</div>
+
 <script>
-  document.querySelectorAll('figure').forEach(fig => {
-    const input = fig.querySelector('input[type=file]');
-    const btn = fig.querySelector('.ph button');
-    const removeBtn = fig.querySelector('.remove');
-    const ph = fig.querySelector('.ph');
-    if(!input || !btn) return;
-
-    btn.addEventListener('click', () => input.click());
-
-    input.addEventListener('change', e => {
-      const file = e.target.files[0];
-      if(!file) return;
-      const url = URL.createObjectURL(file);
-      const img = document.createElement('img');
-      img.src = url;
-      ph.style.display = 'none';
-      fig.appendChild(img);
-      fig.classList.add('filled');
-    });
-
-    removeBtn.addEventListener('click', () => {
-      const img = fig.querySelector('img');
-      if(img) img.remove();
-      ph.style.display = 'flex';
-      fig.classList.remove('filled');
-      input.value = '';
+  const buttons = document.querySelectorAll('.filters button');
+  const pieces = document.querySelectorAll('.piece');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      pieces.forEach(p => {
+        if(p.dataset.cat === 'all') return;
+        p.classList.toggle('hidden', filter !== 'all' && p.dataset.cat !== filter);
+      });
     });
   });
 </script>
+
 </body>
 </html>
